@@ -1,0 +1,253 @@
+/* 
+   Ahmad Hussain Portfolio - Premium Styles
+   Aesthetic: Soft Tech / Dark Luxury
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    /* Colors from Bold Typography Theme */
+    --c-bg: #050505;
+    --c-surface: #0a0a0a;
+    --c-surface-light: rgba(255, 255, 255, 0.05);
+    --c-text: #ffffff;
+    --c-text-muted: rgba(255, 255, 255, 0.5);
+    --c-accent: #C5A059; /* Bronze Gold */
+    --c-accent-muted: rgba(197, 160, 89, 0.4);
+    --c-border: rgba(255, 255, 255, 0.1);
+    
+    /* Typography */
+    --f-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* Spacing */
+    --nav-w: 80px;
+    --section-py: 80px;
+}
+
+/* 1. Global Reset & Layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--f-sans);
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    margin-left: 0; /* Default for mobile */
+    transition: margin 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+    main {
+        margin-left: var(--nav-w);
+        border-left: 1px solid var(--c-border);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* 2. Bold Typography Components */
+.section-title {
+    font-size: clamp(3rem, 10vw, 110px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--c-text-muted);
+    max-width: 600px;
+    line-height: 1.4;
+}
+
+.hero-label, .small-label, .stat-label, .project-tags span, .form-group label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--c-accent);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Hardened Grid Patterns */
+section {
+    padding: var(--section-py) 0;
+    border-bottom: 1px solid var(--c-border);
+}
+
+.grid {
+    display: grid;
+    gap: 0; /* Theme uses borders instead of gaps */
+}
+
+@media (min-width: 768px) {
+    .grid-split {
+        grid-template-columns: 8fr 4fr;
+    }
+    .grid-halves {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* 3. Navigation (Vertical Sidebar) */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    background: var(--c-bg);
+    border-bottom: 1px solid var(--c-border);
+}
+
+@media (min-width: 1024px) {
+    .navbar {
+        width: var(--nav-w);
+        height: 100vh;
+        border-bottom: none;
+        border-right: 1px solid var(--c-border);
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px 0;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        height: 100%;
+        gap: 60px;
+    }
+    
+    .nav-menu {
+        display: flex !important;
+        flex-direction: column;
+        height: auto;
+        justify-content: center;
+        gap: 80px; /* Large spacing as per theme */
+    }
+
+    .nav-link {
+        transform: rotate(-90deg);
+        white-space: nowrap;
+        font-size: 10px;
+        color: var(--c-text-muted) !important;
+    }
+}
+
+.nav-logo {
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: -2px;
+}
+
+/* 4. Hero Section */
+.hero {
+    height: auto;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0;
+    text-align: left;
+}
+
+.hero-title span {
+    color: var(--c-accent);
+    -webkit-text-stroke: 0;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin-left: 0;
+    color: var(--c-text-muted);
+}
+
+/* 5. Components Adjustment */
+.btn {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+}
+
+.btn-primary {
+    background: var(--c-accent);
+    color: black;
+}
+
+.stat-card, .project-card, .init-item, .contact-form {
+    background: transparent;
+    border: none;
+    border-top: 1px solid var(--c-border);
+    padding: 40px;
+    border-radius: 0;
+}
+
+.stat-number, .impact-stat h4 {
+    font-size: 4rem;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -0.05em;
+    color: var(--c-accent);
+}
+
+.skill-badge {
+    background: var(--c-surface-light);
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 12px;
+}
+
+/* Contact Form Specifics */
+.contact-form {
+    background: var(--c-accent);
+    color: black;
+}
+
+.contact-form .form-group label {
+    color: black;
+    font-weight: 900;
+}
+
+.contact-form input, .contact-form textarea {
+    background: rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.1);
+    color: black;
+}
+
+.contact-form .btn-primary {
+    background: black;
+    color: var(--c-accent);
+}
+
+/* 6. Theme Specific Decor */
+.hero-bg {
+    display: none; /* Removed for cleaner bold look */
+}
+
+.project-card:hover {
+    transform: none;
+    background: var(--c-surface-light);
+    box-shadow: none;
+}
