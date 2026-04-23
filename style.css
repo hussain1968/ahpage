@@ -41,15 +41,8 @@ body {
 }
 
 main {
-    margin-left: 0; /* Default for mobile */
+    margin-left: 0;
     transition: margin 0.3s ease;
-}
-
-@media (min-width: 1024px) {
-    main {
-        margin-left: var(--nav-w);
-        border-left: 1px solid var(--c-border);
-    }
 }
 
 .container {
@@ -107,48 +100,50 @@ section {
     }
 }
 
-/* 3. Navigation (Vertical Sidebar) */
+/* 3. Navigation (Horizontal Top Bar) */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 80px;
     z-index: 1000;
-    background: var(--c-bg);
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--c-border);
 }
 
+.nav-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.nav-menu {
+    display: none;
+    gap: 40px;
+}
+
 @media (min-width: 1024px) {
-    .navbar {
-        width: var(--nav-w);
-        height: 100vh;
-        border-bottom: none;
-        border-right: 1px solid var(--c-border);
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 40px 0;
-    }
-    
-    .nav-container {
-        flex-direction: column;
-        height: 100%;
-        gap: 60px;
-    }
-    
     .nav-menu {
-        display: flex !important;
-        flex-direction: column;
-        height: auto;
-        justify-content: center;
-        gap: 80px; /* Large spacing as per theme */
+        display: flex;
+        align-items: center;
     }
 
     .nav-link {
-        transform: rotate(-90deg);
-        white-space: nowrap;
         font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
         color: var(--c-text-muted) !important;
+    }
+    
+    .nav-link:hover {
+        color: var(--c-accent) !important;
     }
 }
 
@@ -156,6 +151,48 @@ section {
     font-weight: 900;
     font-size: 24px;
     letter-spacing: -2px;
+}
+
+.mobile-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+    .mobile-toggle { display: none; }
+}
+
+/* Mobile Nav Overlay */
+@media (max-width: 1023px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: var(--c-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: 0.4s ease-in-out;
+        gap: 32px;
+    }
+    
+    .nav-menu.open {
+        height: calc(100vh - 80px);
+    }
+    
+    .nav-link {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+    }
 }
 
 /* 4. Hero Section */
